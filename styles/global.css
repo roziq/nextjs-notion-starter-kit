@@ -59,3 +59,49 @@ body {
 ::-webkit-scrollbar-track {
   background-color: var(--bg-color);
 }
+body {
+  --notion-font: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI',
+    'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans',
+    'Helvetica Neue', 'Noto Sans', sans-serif;
+  font-family: var(--notion-font);
+  overflow-x: hidden;
+  background-color: var(--bg-color, #ffffff);
+  color: var(--fg-color, #37352f);
+}
+
+/* Warna Default Light Mode */
+:root {
+  --bg-color: #ffffff;
+  --bg-color-1: #f9f8f7;
+  --fg-color: #37352f;
+  --fg-color-1: #787774;
+}
+
+/* Warna Kustom Dark Mode (mengikuti tema Notion / Vercel app Anda) */
+body.dark-mode, .dark {
+  --bg-color: #191919;
+  --bg-color-1: #202020;
+  --fg-color: #ffffff;
+  --fg-color-1: #9b9a97;
+}
+/* Memperhalus tampilan kartu galeri Notion */
+.notion-collection-card {
+  border-radius: 12px !important;
+  border: 1px solid var(--bg-color-1) !important;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.notion-collection-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+}
+
+/* Menyesuaikan lebar kontainer utama agar pas di layar */
+.notion-frame {
+  max-width: 100% !important;
+}
+
+.notion-page {
+  padding-left: max(env(safe-area-inset-left), 2vw) !important;
+  padding-right: max(env(safe-area-inset-right), 2vw) !important;
+}
