@@ -1,83 +1,43 @@
 /* ==========================================================
-   OFFICIAL NOTION CSS EXTRACTION (SAFE FOR NEXT.JS)
+   PRECISION NOTION LAYOUT & MULTI-COLUMN SYNC
    ========================================================== */
 
-/* 1. Font Resmi Notion */
-@font-face {
-  font-family: inter;
-  src: url(/_assets/inter-ui-regular-3ae6a7d3890c33d857fc00bd2e4c4820.woff) format("woff");
-  font-style: normal;
-  font-weight: 400;
+/* Memaksa kontainer halaman utama agar mendukung layout sejajar (flex/grid) */
+.notion-page-content {
+  display: flex !important;
+  flex-direction: row !important;
+  flex-wrap: wrap !important;
+  gap: 32px !important;
+  max-width: 1200px !important;
+  margin: 0 auto !important;
 }
 
-/* 2. Variabel Warna Theme & Utility Asli Notion */
-:root {
-  --c-bacPri: #ffffff;
-  --c-bacSec: #f7f6f3;
-  --c-borPri: rgba(55, 53, 47, 0.16);
-  --cl-carHovBac: rgba(55, 53, 47, 0.08);
+/* Mengatur kolom blok pertama (teks kiri) agar proporsional */
+.notion-page-content > div:first-child {
+  flex: 1 1 300px !important;
+  max-width: 380px !important;
 }
 
-.dark, body.dark, .notion-dark-theme {
-  --c-bacPri: #191919;
-  --c-bacSec: #202020;
-  --c-borPri: rgba(255, 255, 255, 0.13);
-  --cl-carHovBac: rgba(255, 255, 255, 0.055);
+/* Mengatur kolom blok berikutnya (konten kanan / galeri) */
+.notion-page-content > div:not(:first-child) {
+  flex: 2 1 450px !important;
+  min-width: 0 !important;
 }
 
-/* 3. Menyamakan Font Dasar & Subpixel Antialiasing Khas Notion */
-.notion-frame, .notion-page-content {
-  font-family: inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif !important;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-/* 4. Efek Shimmer / Loading Skeleton Asli Notion */
-.notion-shimmer {
-  z-index: 0;
-  position: relative;
-  overflow: hidden;
-}
-.notion-shimmer:before {
-  content: "";
-  z-index: 1;
-  width: 100%;
-  height: 100%;
-  animation: 1s linear infinite shimmer;
-  position: absolute;
-}
-.notion-light-theme .notion-shimmer:before {
-  background: linear-gradient(90deg, #0000 0%, #00000008 50%, #0000 100%);
-}
-.notion-dark-theme .notion-shimmer:before {
-  background: linear-gradient(90deg, #56565600 0%, #5656561a 50%, #56565600 100%);
-}
-@keyframes shimmer {
-  0% { transform: translate(-100%); }
-  100% { transform: translate(100%); }
-}
-
-/* 5. Struktur Grid Galeri Kartu Asli Notion */
+/* Memastikan grid galeri kartu (CUTI & SKUMPTK) tampil rapi ke samping */
 .notion-collection-page-body .notion-gallery,
-.notion-gallery-grid,
-.notion-gallery {
+.notion-gallery-grid {
   display: grid !important;
   grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)) !important;
   gap: 16px !important;
-  padding: 12px 0 !important;
+  padding: 0 !important;
 }
 
-/* 6. Kartu Galeri (CUTI & SKUMPTK) dengan Utility Class Notion (.xfgruyj) */
+/* Styling kartu galeri agar presisi dengan gaya kotak Notion */
 .notion-collection-card {
   border-radius: 8px !important;
-  border: 1px solid var(--c-borPri) !important;
-  background: var(--c-bacPri) !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  background: #202020 !important;
   overflow: hidden !important;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04) !important;
-  transition: background 0.1s ease, box-shadow 0.1s ease !important;
-}
-
-.notion-collection-card:hover {
-  background: var(--cl-carHovBac) !important;
-  cursor: pointer !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2) !important;
 }
