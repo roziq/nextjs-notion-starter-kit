@@ -1,1 +1,50 @@
-/* Clean Notion CSS */
+/* ==========================================================
+   NOTION NATIVE LOOK & GALLERY GRID STYLING
+   ========================================================== */
+
+/* 1. Mengatur lebar kontainer utama agar pas di tengah ala Notion */
+.notion-frame {
+  max-width: 1100px !important;
+  margin: 0 auto !important;
+  padding-left: 24px !important;
+  padding-right: 24px !important;
+}
+
+/* 2. Memaksa Database Gallery agar Berjajar ke Samping (Grid) */
+.notion-collection-page-body .notion-gallery,
+.notion-gallery-grid {
+  display: grid !important;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)) !important;
+  gap: 16px !important;
+  padding: 12px 0 !important;
+}
+
+/* 3. Styling Kotak Kartu Galeri (Card) agar Menyerupai Notion Asli */
+.notion-collection-card {
+  border-radius: 8px !important;
+  border: 1px solid rgba(55, 53, 47, 0.16) !important;
+  background-color: #ffffff !important;
+  overflow: hidden !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04) !important;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease !important;
+}
+
+/* Dukungan Mode Gelap (Dark Mode) */
+.dark .notion-collection-card,
+body.dark .notion-collection-card {
+  border-color: rgba(255, 255, 255, 0.15) !important;
+  background-color: #202020 !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2) !important;
+}
+
+/* Efek saat kursor diarahkan ke kartu */
+.notion-collection-card:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08) !important;
+  border-color: rgba(55, 53, 47, 0.24) !important;
+}
+
+.dark .notion-collection-card:hover,
+body.dark .notion-collection-card:hover {
+  border-color: rgba(255, 255, 255, 0.25) !important;
+}
