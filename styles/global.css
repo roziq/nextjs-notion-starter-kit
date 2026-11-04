@@ -1,4 +1,9 @@
-* {
+/* ==========================================
+   1. RESET & BASE CONFIGURATION
+   ========================================== */
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
 
@@ -14,14 +19,92 @@ html {
 }
 
 body {
-  --notion-font:
-    ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI',
+  --notion-font: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI',
     'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans',
     'Helvetica Neue', 'Noto Sans', sans-serif;
   font-family: var(--notion-font);
   overflow-x: hidden;
+  background-color: #ffffff;
+  color: #37352f;
 }
 
+/* Dark Mode Global Variables & Background */
+body.dark,
+body.dark-mode {
+  background-color: #191919;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+/* ==========================================
+   2. NOTION NATIVE ANIMATIONS & SKELETON
+   ========================================== */
+@keyframes startup-shimmer-animation {
+  0% {
+    transform: translateX(-100%) translateZ(0);
+  }
+  100% {
+    transform: translateX(100%) translateZ(0);
+  }
+}
+
+@keyframes startup-shimmer-fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes startup-spinner-rotate {
+  0% {
+    transform: rotate(0) translateZ(0);
+  }
+  100% {
+    transform: rotate(360deg) translateZ(0);
+  }
+}
+
+/* Shimmer Loading Effect */
+.startup-shimmer {
+  background: rgba(227, 226, 224, 0.5);
+  overflow: hidden;
+  position: relative;
+}
+
+body.dark .startup-shimmer,
+body.dark-mode .startup-shimmer {
+  background: #2f2f2f;
+}
+
+.startup-shimmer::before {
+  content: "";
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  z-index: 1;
+  animation: 1s linear infinite startup-shimmer-animation;
+  background: linear-gradient(
+    90deg,
+    rgba(0, 0, 0, 0) 0,
+    rgba(0, 0, 0, 0.03) 50%,
+    rgba(0, 0, 0, 0) 100%
+  );
+}
+
+body.dark .startup-shimmer::before,
+body.dark-mode .startup-shimmer::before {
+  background: linear-gradient(
+    90deg,
+    transparent 0,
+    rgba(86, 86, 86, 0.1) 50%,
+    transparent 100%
+  );
+}
+
+/* ==========================================
+   3. EMBED & SOCIAL COMPONENTS
+   ========================================== */
 .static-tweet blockquote {
   margin: 0;
   margin-block-start: 0;
@@ -40,68 +123,25 @@ body {
   caret-color: var(--fg-color);
 }
 
+/* ==========================================
+   4. CUSTOM SCROLLBAR
+   ========================================== */
 ::-webkit-scrollbar {
-  width: 5px;
-  height: 5px;
-  background-color: #f5f5f5;
-  background-color: var(--bg-color-1);
+  width: 6px;
+  height: 6px;
+  background-color: transparent;
 }
 
 ::-webkit-scrollbar-thumb {
   border-radius: 10px;
-  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-  background-color: #555;
-  border-radius: 10px;
-  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-  background-color: var(--fg-color-1);
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+body.dark ::-webkit-scrollbar-thumb,
+body.dark-mode ::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.2);
 }
 
 ::-webkit-scrollbar-track {
-  background-color: var(--bg-color);
-}
-body {
-  --notion-font: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI',
-    'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans',
-    'Helvetica Neue', 'Noto Sans', sans-serif;
-  font-family: var(--notion-font);
-  overflow-x: hidden;
-  background-color: var(--bg-color, #ffffff);
-  color: var(--fg-color, #37352f);
-}
-
-/* Warna Default Light Mode */
-:root {
-  --bg-color: #ffffff;
-  --bg-color-1: #f9f8f7;
-  --fg-color: #37352f;
-  --fg-color-1: #787774;
-}
-
-/* Warna Kustom Dark Mode (mengikuti tema Notion / Vercel app Anda) */
-body.dark-mode, .dark {
-  --bg-color: #191919;
-  --bg-color-1: #202020;
-  --fg-color: #ffffff;
-  --fg-color-1: #9b9a97;
-}
-/* Memperhalus tampilan kartu galeri Notion */
-.notion-collection-card {
-  border-radius: 12px !important;
-  border: 1px solid var(--bg-color-1) !important;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.notion-collection-card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
-}
-
-/* Menyesuaikan lebar kontainer utama agar pas di layar */
-.notion-frame {
-  max-width: 100% !important;
-}
-
-.notion-page {
-  padding-left: max(env(safe-area-inset-left), 2vw) !important;
-  padding-right: max(env(safe-area-inset-right), 2vw) !important;
+  background-color: transparent;
 }
