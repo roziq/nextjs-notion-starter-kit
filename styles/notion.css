@@ -1,47 +1,24 @@
 /* ==========================================================
-   NOTION-X GALLERY & GRID LAYOUT OVERRIDES
+   SAFE NOTION-X GALLERY GRID OVERRIDE
    ========================================================== */
 
-/* 1. Ubah tampilan galeri database Notion agar menjadi Grid (Berjajar) */
+/* Memastikan galeri database Notion tampil sejajar (grid) */
 .notion-collection-page-body .notion-gallery {
   display: grid !important;
   grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)) !important;
   gap: 16px !important;
-  padding: 12px 0 !important;
 }
 
-/* 2. Styling Kotak Kartu Galeri (Card) */
+/* Styling kartu galeri agar rapi */
 .notion-collection-card {
-  border-radius: 10px !important;
-  border: 1px solid rgba(0, 0, 0, 0.08) !important;
+  border-radius: 8px !important;
+  border: 1px solid rgba(0, 0, 0, 0.1) !important;
   background: #ffffff !important;
   overflow: hidden !important;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05) !important;
-  transition: all 0.2s ease-in-out !important;
 }
 
-/* Mode Gelap untuk Kartu */
-.dark .notion-collection-card,
-body.dark .notion-collection-card {
+body.dark .notion-collection-card,
+.dark .notion-collection-card {
   border-color: rgba(255, 255, 255, 0.1) !important;
   background: #202020 !important;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2) !important;
-}
-
-/* Efek saat kursor diarahkan ke kartu */
-.notion-collection-card:hover {
-  transform: translateY(-3px) !important;
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1) !important;
-  border-color: rgba(0, 0, 0, 0.15) !important;
-}
-
-.dark .notion-collection-card:hover,
-body.dark .notion-collection-card:hover {
-  border-color: rgba(255, 255, 255, 0.2) !important;
-}
-
-/* 3. Rapikan Lebar Halaman Utama agar proporsional */
-.notion-frame {
-  max-width: 1000px !important;
-  margin: 0 auto !important;
 }
