@@ -4,12 +4,12 @@ import 'katex/dist/katex.min.css'
 import 'prismjs/themes/prism-coy.css'
 // core styles shared by all of react-notion-x (required)
 import 'react-notion-x/styles.css'
-// global styles shared across the entire site
-import '@/styles/global.css'
 // global style overrides for notion
 import '@/styles/notion.css'
 // global style overrides for prism theme (optional)
 import '@/styles/prism-theme.css'
+// global styles shared across the entire site
+import '@/styles/global.css'
 
 import type { Metadata, Viewport } from 'next'
 import type { ReactNode } from 'react'
