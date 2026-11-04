@@ -14,7 +14,7 @@ export default siteConfig({
   author: 'Rindi Atma',
 
   // open graph metadata (optional)
-  description: 'Memberikan dukungan administratif dan layanan operasional yang responsif',
+  description: 'Layanan Kepegawaian SMKN 1 Purbalingga',
 
   // social usernames (optional)
   twitter: 'transitive_bs',
