@@ -9,12 +9,12 @@ export default siteConfig({
   rootNotionSpaceId: null,
 
   // basic site info (required)
-  name: 'Next.js Notion Starter Kit',
-  domain: 'nextjs-notion-starter-kit.transitivebullsh.it',
-  author: 'Travis Fischer',
+  name: 'Layanan Kepegawaian SMKN 1 Purbalingga',
+  domain: 'https://kepegsmega.vercel.app',
+  author: 'RindiAtma',
 
   // open graph metadata (optional)
-  description: 'Example Next.js Notion Starter Kit Site',
+  description: 'Memberikan dukungan administratif dan layanan operasional yang responsif',
 
   // social usernames (optional)
   twitter: 'transitive_bs',
