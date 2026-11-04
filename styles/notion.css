@@ -8583,3 +8583,41 @@ fieldset {
 }
 
 @layer theme,components,utilities;
+
+/* ==========================================================
+   FIX GALLERY VIEW & GRID CARDS UNTUK NEXTJS-NOTION-STARTER-KIT
+   ========================================================== */
+
+/* Memaksa galeri database Notion agar menjadi Grid (berjajar ke samping) */
+.notion-collection-gallery {
+  display: grid !important;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)) !important;
+  gap: 16px !important;
+  padding: 10px 0 !important;
+}
+
+/* Mengatur bentuk kartu galeri agar mirip kotak/card Notion */
+.notion-collection-card {
+  border-radius: 8px !important;
+  border: 1px solid rgba(0, 0, 0, 0.1) !important;
+  background: var(--bg-color, #fff) !important;
+  overflow: hidden !important;
+  transition: transform 0.1s ease, box-shadow 0.1s ease !important;
+}
+
+.dark .notion-collection-card,
+body.dark .notion-collection-card {
+  border-color: rgba(255, 255, 255, 0.1) !important;
+  background: #202020 !important;
+}
+
+.notion-collection-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08) !important;
+}
+
+/* Memperbaiki lebar kontainer halaman agar tidak terlalu melebar */
+.notion-frame {
+  max-width: 900px !important;
+  margin: 0 auto !important;
+}
